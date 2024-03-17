@@ -1,0 +1,40 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .imageContainer {
+    margin-bottom: 8px;
+  }
+  
+  .buttonContainer {
+    margin-top: auto; /* Pushes the button to the bottom */
+  }
+  
+  .button {
+    width: 100%;
+    background: linear-gradient(to right, #6a11cb, #8f3be7);
+    color: white; /* Set text color to white */
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background: linear-gradient(to right, #8f3be7, #6a11cb);
+  }
