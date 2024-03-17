@@ -1,4 +1,8 @@
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   width: 100%;
   max-width: 1440px;
   padding: 0 1rem;
@@ -142,4 +146,14 @@
 }
 .logo img {
   filter: invert(1);
+}
+
+.nftContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonContainer {
+  margin-top: 10px; /* Adjust as needed */
 }
