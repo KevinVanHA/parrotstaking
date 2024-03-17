@@ -67,26 +67,26 @@ const Home: NextPage = () => {
 
         <h1>My Parrots:</h1>
         <div className={styles.nftContainer}>
-          {myParrotNFTs?.map((nft) => (
-            <div className={styles.nftContainer}>
-              <div>
-                <h3>{nft.metadata.name}</h3>
-                <ThirdwebNftMedia
-                  metadata={nft.metadata}
-                  height="150px"
-                  width="200px"
-                />
-              </div>
-              <div className={styles.buttonContainer}>
-                <Web3Button
-                  contractAddress={stakingAddress}
-                  action={() => address && stakeNFT([nft.metadata.id].join(""))}
-                >
-                  Stake Parrot
-                </Web3Button>
-              </div>
-            </div>
-          ))}
+        {myParrotNFTs?.map((nft, index) => (
+  <div key={index} className={styles.nftItem}>
+    <div>
+      <h3>{nft.metadata.name}</h3>
+      <ThirdwebNftMedia
+        metadata={nft.metadata}
+        height="150px"
+        width="200px"
+      />
+    </div>
+    <div className={styles.buttonContainer}>
+    <Web3Button
+  contractAddress={stakingAddress}
+  action={() => address && stakeNFT([nft.metadata.id])} // Ensure nft.metadata.id is converted to an array
+>
+  Stake Parrot
+</Web3Button>
+    </div>
+  </div>
+))}
         </div>
 
         <h1>Staked Parrots:</h1>
