@@ -78,7 +78,7 @@ const Home: NextPage = () => {
               <div className={styles.buttonContainer}>
               <Web3Button
               contractAddress={stakingAddress}
-              action={() => address && stakeNFT([nft.metadata.id])}
+              action={() => address && stakeNFT(nft.metadata.id)}
               >Stake Parrot</Web3Button>
           </div>
           </div>
