@@ -22,23 +22,20 @@ const Home: NextPage = () => {
   const { data:myParrotNFTs} = useOwnedNFTs(parrotContract, address);
   const { data: stakedParrotNFTs } = useContractRead(stakingContract, "getStakeInfo", [address]);
 
-
-
   async function stakeNFT(nftId: string | undefined) {
-    if (!address || nftId === undefined) return;
-
+    if (!address || !nftId) return;
+  
     const isApproved = await parrotContract?.isApproved(
-        address,
-        stakingAddress
+      address,
+      stakingAddress
     );
-
+  
     if (!isApproved) {
-        await parrotContract?.setApprovalForAll(stakingAddress, true);
+      await parrotContract?.setApprovalForAll(stakingAddress, true);
     }
-
-    await stakingContract?.call("stake", [nftId]);
-}
-
+  
+    await stakingContract?.call("stake", [[nftId]]); // Pass an array of token IDs
+  }
   const [claimableReward, setClaimableRewards] = useState<BigNumber>();
 
     useEffect(() => {
