@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider
     activeChain="mumbai"
-    clientId="728a8ba599fb4aa43865a0eb03d9c318"
+    clientId="94da7d642c1c31c73a6c5c5753457476"
   >
       <Component {...pageProps} />
     </ThirdwebProvider>
