@@ -80,7 +80,7 @@ const Home: NextPage = () => {
     <div className={styles.buttonContainer}>
     <Web3Button
   contractAddress={stakingAddress}
-  action={() => address && stakeNFT([nft.metadata.id])} // Ensure nft.metadata.id is converted to an array
+  action={() => address && stakeNFT([nft.metadata.id.toString()])} // Convert nft.metadata.id to an array
 >
   Stake Parrot
 </Web3Button>
