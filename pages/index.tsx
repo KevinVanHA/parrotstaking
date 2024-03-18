@@ -7,9 +7,16 @@ import { BigNumber } from "ethers";
 import NFTCard from '../components/NFTCard';
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
+import Header from '../components/Header';
+import Image1 from '../public/images/image1.jpg';
+import Image2 from '../public/images/image2.jpg';
+import Slider from '../components/Slider';
+
+
 
 
 const Home: NextPage = () => {
+
 
   const address = useAddress ();
   
@@ -50,25 +57,21 @@ const Home: NextPage = () => {
     }, [address, stakingContract]);
 
   return (
+    
     <div className={styles.container}>
-    <header className={styles.header}>
-      <h1 className={styles.logo}>Lets go Kevin!</h1>
-      <nav className={styles.menu}>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main className={styles.main}>
+      <div><Header /></div>
+      <Slider images={['/images/image1.jpg', '/images/image2.jpg']} />
+      <main className={styles.main}>
+     <div className={styles.myParrotsContainer}>
      <h1>Parrot NFT</h1>
      <Web3Button
       contractAddress={parrotAddress}
       action={(parrotContract) => parrotContract.erc721.claim(1)}
      >Claim Parrot</Web3Button>   
      <br />
+     <br />
+     <br />
+     
       <h1>My Parrots:</h1>
       <div>
         {myParrotNFTs?.map((nft) => (
@@ -81,8 +84,9 @@ const Home: NextPage = () => {
               height="150px"
               width="200px"
               />
-              </div>
+            </div>
               <br />
+              
               <div className={styles.buttonContainer}>
               <Web3Button
               contractAddress={stakingAddress}
@@ -90,9 +94,12 @@ const Home: NextPage = () => {
               >Stake Parrot</Web3Button>
           </div>
           </div>
+
           
         ))}
       </div>
+      </div>
+      <div className={styles.stakedParrotsContainer}>
       <h1> Staked Parrots:</h1>
       <div>
           {stakedParrotNFTs && stakedParrotNFTs[0].map((stakedNFT: BigNumber) => (
@@ -102,15 +109,21 @@ const Home: NextPage = () => {
           ))}
 
       </div>
+      </div>
       <br />
+      <div className={styles.claimableRewardsContainer}>
       <h1> Claimable $PECANS:</h1>
       {!claimableReward? "Loading..." : ethers.utils.formatUnits(claimableReward, 18) }
+      <br />
+      <br />
       <Web3Button
       contractAddress={stakingAddress} 
       action={(stakingContract) => stakingContract.call("claimRewards")}
       >Claim $PECAN</Web3Button>
+      </div>
     </main>
     </div>
+    
     );
 };
 

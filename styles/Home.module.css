@@ -1,70 +1,77 @@
-.nftContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .main {
-  text-align: center;
-}
-
-.nftContainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  justify-content: left; /* Horizontally center the boxes */
 }
 
-.nftItem {
+.box {
+  width: calc(50% - 16px); /* Adjust width as needed */
+  padding: 16px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Center content vertically */
 }
 
-.stakedParrotsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+.myParrotsContainer,
+.stakedParrotsContainer,
+.claimableRewardsContainer {
+  width: 100%; /* Ensure content takes full width */
+  padding: 16px;
+  text-align: center; /* Center text */
 }
 
-.stakedParrotItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.myParrotsContainer h1,
+.stakedParrotsContainer h1,
+.claimableRewardsContainer h1 {
+  margin-top: 0; /* Remove default margin */
 }
 
-.buttonContainer {
-  margin-top: 10px;
+.slider {
+  width: 100%; /* Full width */
+  height: 100vh; /* 100% of viewport height */
+  overflow: hidden; /* Hide overflowing content */
+  position: relative; /* Positioning context for absolute positioning of images */
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #f0f0f0;
+.slider img {
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Make sure the images behave as block elements */
+  position: absolute; /* Position images absolutely within the slider */
+  top: 0; /* Align images to the top */
+  left: 0; /* Align images to the left */
+  transition: transform 0.5s ease; /* Smooth transition effect */
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: black; /* Black text color for logo */
-}
-.menu {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.slider img:nth-child(1) {
+  left: 0; /* Initially, display the first image at the left edge */
 }
 
-.menuItems {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
+.slider img:nth-child(2) {
+  left: 100%; /* Initially, display the second image outside the slider */
 }
 
-.menuItem {
-  margin-right: 16px;
-  cursor: pointer;
+.slider.active img:nth-child(1) {
+  transform: translateX(-100%); /* Move the first image to the left */
+}
+
+.slider.active img:nth-child(2) {
+  left: 0; /* Move the second image to the left edge */
+  transform: translateX(-100%); /* Move the second image into view */
+}
+
+.cardsContainer {
+  max-width: 80vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the minmax width as needed */
+  gap: 16px; /* Gap between each card */
+  margin: 0 auto; /* Center horizontally */
+  justify-items: center; /* Center items horizontally within the grid */
+}
+
+.card {
+  max-width: 300px; /* Set a maximum width for each card */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
 }
